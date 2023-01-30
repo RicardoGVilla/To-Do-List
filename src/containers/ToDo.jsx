@@ -10,19 +10,49 @@ const Container = styled.div`
   height: 100vh;
 `;
 
-const ToDoContainer = styled.div`
+const CardContainer = styled.div`
   padding: 3rem !important;
   background-color: white;
   width: 50%;
-  height: 50%;
-  display: flex;
+  height: 60%;
   flex-direction: column;
   border-radius: 15px;
   font-family: Roboto, sans-serif;
-  padding: 48px;
+  padding: 40px;
 `;
 
-const CardBody = styled.div``;
+const CardContent = styled.div``;
+
+const InputSection = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const InputField = styled.input`
+  height: 80px;
+  width: 80%;
+  padding: 10px;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  border-radius: 10px;
+  color: black;
+  border: 1px solid black;
+  box-sizing: border-box;
+`;
+
+const Button = styled.div`
+  background-color: blue;
+  color: white;
+  padding: 15px 30px;
+  border-radius: 5px;
+  margin-left: 12px;
+`;
+
+const ToDoList = styled.ul`
+  padding: 0;
+`;
 
 function ToDo() {
   const [items, setItems] = useState([]);
@@ -42,43 +72,34 @@ function ToDo() {
 
   return (
     <Container>
-      <ToDoContainer>
-        <CardBody>
-          <h4 className="mb-3">To Do List</h4>
-          <form
-            onSubmit={handleSubmit}
-            className="d-flex justify-content-center align-items-center mb-4"
-          >
-            <div className="form-outline flex-fill">
-              <div className="input-group">
-                <div className="form-label">
-                  <label htmlFor="form3"></label>
-                </div>
-                <input
-                  id="form3"
-                  type="text"
-                  placeholder="What do you need to do today?"
-                  value={newItem}
-                  onChange={(e) => setNewItem(e.target.value)}
-                />
-                <button type="submit" className="btn btn-primary btn-lg ms-2">
-                  Add
-                </button>
-              </div>
-            </div>
-          </form>
-          <ul>
-            {items.map((item, index) => (
-              <ToDoItem
-                item={item.item}
-                isCompleted={item.isCompleted}
-                index={index}
-                handleRemove={() => removeItem(index)}
+      <CardContainer>
+        <CardContent>
+          <h4>To Do List</h4>
+          <form onSubmit={handleSubmit}>
+            <InputSection>
+              <InputField
+                type="text"
+                placeholder="What do you need to do today?"
+                value={newItem}
+                onChange={(e) => setNewItem(e.target.value)}
               />
-            ))}
-          </ul>
-        </CardBody>
-      </ToDoContainer>
+              <div>
+                <Button type="submit">ADD</Button>
+              </div>
+            </InputSection>
+            <ToDoList>
+              {items.map((item, index) => (
+                <ToDoItem
+                  item={item.item}
+                  isCompleted={item.isCompleted}
+                  index={index}
+                  handleRemove={() => removeItem(index)}
+                />
+              ))}
+            </ToDoList>
+          </form>
+        </CardContent>
+      </CardContainer>
     </Container>
   );
 }
