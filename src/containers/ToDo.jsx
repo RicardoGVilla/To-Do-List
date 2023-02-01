@@ -6,9 +6,9 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #e2d5de;
+  background-color: #525e7e;
   height: 100vh;
-  font-size: 1.2rem;
+  font-size: 20px;
   font-family: sans-serif;
 `;
 
@@ -42,6 +42,7 @@ const InputField = styled.input`
   color: black;
   border: 1px solid #b7acac;
   box-sizing: border-box;
+  caret-color: #b7acac;
 `;
 
 const Button = styled.div`
@@ -50,6 +51,10 @@ const Button = styled.div`
   padding: 15px 30px;
   border-radius: 5px;
   margin-left: 12px;
+  cursor: pointer;
+  &:hover {
+    background-color: #3f3fc9;
+  }
 `;
 
 const ToDoList = styled.ul`
@@ -62,6 +67,7 @@ function ToDo() {
 
   function handleSubmit(event) {
     event.preventDefault();
+    if (!newItem.trim()) return;
     setItems([...items, { item: newItem, isCompleted: false }]);
     setNewItem("");
   }
@@ -86,12 +92,14 @@ function ToDo() {
                 onChange={(e) => setNewItem(e.target.value)}
               />
               <div>
-                <Button type="submit">ADD</Button>
+                <Button type="submit" onClick={handleSubmit}>
+                  ADD
+                </Button>
               </div>
             </InputSection>
           </form>
           <ToDoList>
-            {items.slice(0, 7).map((item, index) => (
+            {items.slice(0, 6).map((item, index) => (
               <ToDoItem
                 item={item.item}
                 isCompleted={item.isCompleted}

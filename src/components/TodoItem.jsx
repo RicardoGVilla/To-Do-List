@@ -2,12 +2,24 @@ import React from "react";
 import { useState } from "react";
 import styled from "styled-components";
 
-//Input container styling
+//To DO
+
+// Add spacing between item and input text
+// Add left margin between items and border
+// Activate ADD button
+// Change the font
+// Increase size of input box
+//Center the input box
+
+//Change the color of active input text box
+// What if task is empty
 
 const Input = styled.input`
   padding: 18px;
   font-size: 19px;
   font-family: sans-serif;
+  width: 15px;
+  height: 15px;
 `;
 
 const ItemText = styled.span`
@@ -17,12 +29,14 @@ const ItemText = styled.span`
 const ListItem = styled.li`
   list-style: none;
   margin: 10px 0;
-  padding: 7px;
+  padding: 4px;
   background-color: #f2f2f2;
   border-radius: 5px;
   display: flex;
   flex-direction: row;
   border-bottom: 2px solid #d3cdcd;
+  padding-top: 20px;
+  margin-left: 10px;
 `;
 
 const CloseButton = styled.button`
@@ -39,8 +53,7 @@ const CloseButton = styled.button`
 `;
 
 const CheckboxContainer = styled.div`
-  margin-left: 0;
-  margin-right: auto;
+  cursor: pointer;
 `;
 
 const TextContainer = styled.div`
