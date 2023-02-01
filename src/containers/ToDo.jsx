@@ -8,6 +8,8 @@ const Container = styled.div`
   justify-content: center;
   background-color: #e2d5de;
   height: 100vh;
+  font-size: 1.2rem;
+  font-family: sans-serif;
 `;
 
 const CardContainer = styled.div`
@@ -38,12 +40,12 @@ const InputField = styled.input`
   line-height: inherit;
   border-radius: 10px;
   color: black;
-  border: 1px solid black;
+  border: 1px solid #b7acac;
   box-sizing: border-box;
 `;
 
 const Button = styled.div`
-  background-color: blue;
+  background-color: #4343d5;
   color: white;
   padding: 15px 30px;
   border-radius: 5px;
@@ -87,17 +89,17 @@ function ToDo() {
                 <Button type="submit">ADD</Button>
               </div>
             </InputSection>
-            <ToDoList>
-              {items.map((item, index) => (
-                <ToDoItem
-                  item={item.item}
-                  isCompleted={item.isCompleted}
-                  index={index}
-                  handleRemove={() => removeItem(index)}
-                />
-              ))}
-            </ToDoList>
           </form>
+          <ToDoList>
+            {items.slice(0, 7).map((item, index) => (
+              <ToDoItem
+                item={item.item}
+                isCompleted={item.isCompleted}
+                index={index}
+                handleRemove={() => removeItem(index)}
+              />
+            ))}
+          </ToDoList>
         </CardContent>
       </CardContainer>
     </Container>
